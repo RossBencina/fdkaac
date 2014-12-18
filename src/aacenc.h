@@ -47,4 +47,12 @@ int aac_encode_frame(HANDLE_AACENCODER encoder,
                      const int16_t *input, unsigned iframes,
                      aacenc_frame_t *output);
 
+#define RB_STATE_PERSISTENCE_EXTENSION
+#ifdef RB_STATE_PERSISTENCE_EXTENSION
+
+void aacenc_ext_save_encoder_state(HANDLE_AACENCODER encoder, const char *stateFileName);
+void aacenc_ext_load_encoder_state(HANDLE_AACENCODER encoder, const char *stateFileName);
+
+#endif /* RB_STATE_PERSISTENCE_EXTENSION */
+
 #endif

@@ -44,6 +44,8 @@
 
 static volatile int g_interrupted = 0;
 
+static int resumable_mode = 1; // FIXME: make resume optional with command line params
+
 #if HAVE_SIGACTION
 static void signal_handler(int signum)
 {
@@ -542,6 +544,10 @@ int encode(aacenc_param_ex_t *params, pcm_reader_t *reader,
         }
         ip = ibuf;
         remaining = nread;
+        if (resumable_mode && remaining == 0 ) {
+            aacenc_ext_save_encoder_state(encoder, "output.encoderstate"); // FIXME: add command line param for encoder state file name
+            goto DONE;
+        }
         do {
             obp = &obuf[flip];
             consumed = aac_encode_frame(encoder, fmt, ip, remaining, obp);
@@ -551,19 +557,25 @@ int encode(aacenc_param_ex_t *params, pcm_reader_t *reader,
 
             remaining -= consumed;
             ip += consumed * fmt->channels_per_frame;
-            flip ^= 1;
-            /*
-             * As we pad 1 frame at beginning and ending by our extrapolator,
-             * we want to drop them.
-             * We delay output by 1 frame by double buffering, and discard
-             * second frame and final frame from the encoder.
-             * Since sbr_header is included in the first frame (in case of
-             * SBR), we cannot discard first frame. So we pick second instead.
-             */
+
+            if (!resumable_mode)
+                flip ^= 1;
+            
             ++encoded;
-            if (encoded == 1 || encoded == 3)
-                continue;
-            obp = &obuf[flip];
+            if (!resumable_mode) {
+                /*
+                * As we pad 1 frame at beginning and ending by our extrapolator,
+                * we want to drop them.
+                * We delay output by 1 frame by double buffering, and discard
+                * second frame and final frame from the encoder.
+                * Since sbr_header is included in the first frame (in case of
+                * SBR), we cannot discard first frame. So we pick second instead.
+                */
+                if (encoded == 1 || encoded == 3)
+                    continue;
+                obp = &obuf[flip];
+            }
+
             if (write_sample(params->output_fp, m4af, obp) < 0)
                 goto END;
             ++frames_written;
@@ -832,7 +844,8 @@ int main(int argc, char **argv)
         m4af_set_priming_mode(m4af, params.gapless_mode + 1);
         m4af_begin_write(m4af);
     }
-    if (scale_shift && (aacinfo.encoderDelay & 1)) {
+
+    if ((!resumable_mode) && scale_shift && (aacinfo.encoderDelay & 1)) {
         /*
          * Since odd delay cannot be exactly expressed in downsampled scale,
          * we push one zero frame to the encoder here, to make delay even
@@ -842,6 +855,11 @@ int main(int argc, char **argv)
         aac_encode_frame(encoder, sample_format, zero, 1, &frame);
         free(frame.data);
     }
+
+    if (resumable_mode) {
+        aacenc_ext_load_encoder_state(encoder, "input.encoderstate"); // FIXME: add command line param for encoder state file name
+    }
+
     frame_count = encode(&params, reader, encoder, aacinfo.frameLength, m4af);
     if (frame_count < 0)
         goto END;
