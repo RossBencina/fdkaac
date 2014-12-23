@@ -44,8 +44,6 @@
 
 static volatile int g_interrupted = 0;
 
-static int resumable_mode = 1; // FIXME: make resume optional with command line params
-
 #if HAVE_SIGACTION
 static void signal_handler(int signum)
 {
@@ -154,6 +152,8 @@ PROGNAME " %s\n"
 "                               transport layer\n"
 "\n"
 " -o <filename>                 Output filename\n"
+" --load-state <filename>       Encoder state load filename\n"
+" --save-state <filename>       Encoder state save filename\n"
 " -G, --gapless-mode <n>        Encoder delay signaling for gapless playback\n"
 "                                 0: iTunSMPB (default)\n"
 "                                 1: ISO standard (edts + sgpd)\n"
@@ -221,6 +221,10 @@ typedef struct aacenc_param_ex_t {
     int silent;
     int moov_before_mdat;
 
+    int resumable_mode;
+    char *load_state_filename;
+    char *save_state_filename;
+
     int is_raw;
     unsigned raw_channels;
     unsigned raw_rate;
@@ -241,6 +245,8 @@ int parse_options(int argc, char **argv, aacenc_param_ex_t *params)
 
 #define OPT_INCLUDE_SBR_DELAY    M4AF_FOURCC('s','d','l','y')
 #define OPT_MOOV_BEFORE_MDAT     M4AF_FOURCC('m','o','o','v')
+#define OPT_LOAD_STATE           M4AF_FOURCC('l','d','S','t')
+#define OPT_SAVE_STATE           M4AF_FOURCC('s','a','S','t')
 #define OPT_RAW_CHANNELS         M4AF_FOURCC('r','c','h','n')
 #define OPT_RAW_RATE             M4AF_FOURCC('r','r','a','t')
 #define OPT_RAW_FORMAT           M4AF_FOURCC('r','f','m','t')
@@ -267,6 +273,9 @@ int parse_options(int argc, char **argv, aacenc_param_ex_t *params)
         { "ignorelength",     no_argument,       0, 'I' },
         { "silent",           no_argument,       0, 'S' },
         { "moov-before-mdat", no_argument,       0, OPT_MOOV_BEFORE_MDAT   },
+
+        { "load-state",       required_argument, 0, OPT_LOAD_STATE         },
+        { "save-state",       required_argument, 0, OPT_SAVE_STATE         },
 
         { "raw",              no_argument,       0, 'R' },
         { "raw-channels",     required_argument, 0, OPT_RAW_CHANNELS       },
@@ -387,6 +396,17 @@ int parse_options(int argc, char **argv, aacenc_param_ex_t *params)
         case OPT_MOOV_BEFORE_MDAT:
             params->moov_before_mdat = 1;
             break;
+
+        case OPT_LOAD_STATE:
+            params->load_state_filename = optarg;
+            params->resumable_mode = 1;
+            break;
+
+        case OPT_SAVE_STATE:
+            params->save_state_filename = optarg;
+            params->resumable_mode = 1;
+            break;
+
         case 'R':
             params->is_raw = 1;
             break;
@@ -544,8 +564,8 @@ int encode(aacenc_param_ex_t *params, pcm_reader_t *reader,
         }
         ip = ibuf;
         remaining = nread;
-        if (resumable_mode && remaining == 0 ) {
-            aacenc_ext_save_encoder_state(encoder, "output.encoderstate"); // FIXME: add command line param for encoder state file name
+        if (params->resumable_mode && remaining == 0 ) {
+            aacenc_ext_save_encoder_state(encoder, params->save_state_filename);
             goto DONE;
         }
         do {
@@ -558,11 +578,11 @@ int encode(aacenc_param_ex_t *params, pcm_reader_t *reader,
             remaining -= consumed;
             ip += consumed * fmt->channels_per_frame;
 
-            if (!resumable_mode)
+            if (!params->resumable_mode)
                 flip ^= 1;
             
             ++encoded;
-            if (!resumable_mode) {
+            if (!params->resumable_mode) {
                 /*
                 * As we pad 1 frame at beginning and ending by our extrapolator,
                 * we want to drop them.
@@ -845,7 +865,7 @@ int main(int argc, char **argv)
         m4af_begin_write(m4af);
     }
 
-    if ((!resumable_mode) && scale_shift && (aacinfo.encoderDelay & 1)) {
+    if ((!params.resumable_mode) && scale_shift && (aacinfo.encoderDelay & 1)) {
         /*
          * Since odd delay cannot be exactly expressed in downsampled scale,
          * we push one zero frame to the encoder here, to make delay even
@@ -856,8 +876,13 @@ int main(int argc, char **argv)
         free(frame.data);
     }
 
-    if (resumable_mode) {
-        aacenc_ext_load_encoder_state(encoder, "input.encoderstate"); // FIXME: add command line param for encoder state file name
+    if (params.resumable_mode) {
+#if 0 // save and load the encoder state as a test:
+        aacenc_ext_save_encoder_state(encoder, "test.encoderstate");
+        aacenc_ext_load_encoder_state(encoder, "test.encoderstate");
+#endif
+
+        aacenc_ext_load_encoder_state(encoder, params.load_state_filename);
     }
 
     frame_count = encode(&params, reader, encoder, aacinfo.frameLength, m4af);
