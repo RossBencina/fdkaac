@@ -783,8 +783,11 @@ pcm_reader_t *open_input(aacenc_param_ex_t *params)
     reader = pcm_open_native_converter(reader);
     if (reader && PCM_IS_FLOAT(pcm_get_format(reader)))
         reader = limiter_open(reader);
-    if (reader && (reader = pcm_open_sint16_converter(reader)) != 0)
-        reader = extrapolater_open(reader);
+    if (reader && (reader = pcm_open_sint16_converter(reader)) != 0) {
+        if (!params->resumable_mode)
+            reader = extrapolater_open(reader);
+    }
+
     return reader;
 FAIL:
     return 0;
