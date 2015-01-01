@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{a93dd25f-f1ab-45ee-ba75-0cbe2bef9d34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{e4d90fb8-45db-4c3f-8ef5-aaf04d8d00f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aac_ram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aac_rom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_drc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_hcr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_hcr_bit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_hcrs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_pns.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_tns.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdecoder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdecoder_lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\block.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\channel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\channelinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\conceal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\ldfiltbank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\pulsedata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\rvlc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\rvlcbit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\rvlcconceal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\stereo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_adif.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_adts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_asc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_latm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\env_calc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\env_dec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\env_extr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\huff_dec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\lpp_tran.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\psbitdec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\psdec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\psdec_hybrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_crc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_deb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_dec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_ram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_rom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbrdec_drc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbrdec_freq_sca.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbrdecoder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSYS\src\conv_string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSYS\src\genericStds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libSYS\src\wav_file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\autocorr2nd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\dct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_bitbuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_crc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_hybrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_tools_rom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_trigFcts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\fft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\fft_rad2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\fixpoint_math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\mdct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\qmf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libFDK\src\scale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libPCMutils\src\limiter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fdk-aac\libPCMutils\src\pcmutils_lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\fdk-aac\libAACdec\include\aacdecoder_lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aac_ram.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aac_rom.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_drc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_drc_types.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_hcr.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_hcr_bit.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_hcr_types.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_hcrs.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_pns.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_tns.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdecoder.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\block.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\channel.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\channelinfo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\conceal.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\conceal_types.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\debug.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\ldfiltbank.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\overlapadd.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\pulsedata.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\rvlc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\rvlc_info.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\rvlcbit.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\rvlcconceal.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libAACdec\src\stereo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\mpegFileFormat.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\tpdec_adif.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\tpdec_adts.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\tpdec_latm.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\include\mpegFileRead.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\include\tp_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\include\tpdec_lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\include\sbrdecoder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\env_calc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\env_dec.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\env_extr.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\huff_dec.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\lpp_tran.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\psbitdec.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\psdec.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\psdec_hybrid.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_crc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_deb.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_dec.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_ram.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_rom.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_scale.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbrdec_drc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbrdec_freq_sca.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\transcendent.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libPCMutils\src\limiter_private.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\tpdec_lib_private.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fdk-aac\libPCMutils\src\pcmutils_lib_private.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

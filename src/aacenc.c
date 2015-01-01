@@ -233,7 +233,7 @@ int aac_encode_frame(HANDLE_AACENCODER encoder,
 void aacenc_ext_save_encoder_state(HANDLE_AACENCODER encoder, const char *stateFileName)
 {
     if (!stateFileName) {
-        fprintf(stderr, "WARNING: no save encoder state file specified\n", stateFileName);
+        fprintf(stderr, "WARNING: no save encoder state file specified\n");
         return;
     }
 
@@ -251,7 +251,7 @@ void aacenc_ext_save_encoder_state(HANDLE_AACENCODER encoder, const char *stateF
 void aacenc_ext_load_encoder_state(HANDLE_AACENCODER encoder, const char *stateFileName)
 {
     if (!stateFileName) {
-        fprintf(stderr, "WARNING: no load encoder state file specified\n", stateFileName);
+        fprintf(stderr, "WARNING: no load encoder state file specified\n");
         return;
     }
 

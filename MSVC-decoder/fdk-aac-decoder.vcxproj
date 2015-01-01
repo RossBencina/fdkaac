@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4F8A7120-627A-477B-8A3E-4BC182C8F3F3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>fdkaac</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>$(Configuration)Lib\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>$(Configuration)Lib\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../fdk-aac/libaacdec/include;../fdk-aac/libFDK/include;../fdk-aac/libMpegTPDec/include;../fdk-aac/libPCMutils/include;../fdk-aac/libSBRdec/include;../fdk-aac/libSYS/include</AdditionalIncludeDirectories>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../fdk-aac/libaacdec/include;../fdk-aac/libFDK/include;../fdk-aac/libMpegTPDec/include;../fdk-aac/libPCMutils/include;../fdk-aac/libSBRdec/include;../fdk-aac/libSYS/include</AdditionalIncludeDirectories>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdecoder.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdecoder_lib.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_drc.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_hcr.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_hcrs.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_hcr_bit.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_pns.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aacdec_tns.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aac_ram.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\aac_rom.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\block.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\channel.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\channelinfo.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\conceal.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\ldfiltbank.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\pulsedata.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\rvlc.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\rvlcbit.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\rvlcconceal.cpp" />
+    <ClCompile Include="..\fdk-aac\libAACdec\src\stereo.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\autocorr2nd.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\dct.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_bitbuffer.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_core.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_crc.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_hybrid.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_tools_rom.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\FDK_trigFcts.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\fft.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\fft_rad2.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\fixpoint_math.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\mdct.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\qmf.cpp" />
+    <ClCompile Include="..\fdk-aac\libFDK\src\scale.cpp" />
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_adif.cpp" />
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_adts.cpp" />
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_asc.cpp" />
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_latm.cpp" />
+    <ClCompile Include="..\fdk-aac\libMpegTPDec\src\tpdec_lib.cpp" />
+    <ClCompile Include="..\fdk-aac\libPCMutils\src\limiter.cpp" />
+    <ClCompile Include="..\fdk-aac\libPCMutils\src\pcmutils_lib.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\env_calc.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\env_dec.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\env_extr.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\huff_dec.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\lpp_tran.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\psbitdec.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\psdec.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\psdec_hybrid.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbrdecoder.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbrdec_drc.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbrdec_freq_sca.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_crc.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_deb.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_dec.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_ram.cpp" />
+    <ClCompile Include="..\fdk-aac\libSBRdec\src\sbr_rom.cpp" />
+    <ClCompile Include="..\fdk-aac\libSYS\src\conv_string.cpp" />
+    <ClCompile Include="..\fdk-aac\libSYS\src\genericStds.cpp" />
+    <ClCompile Include="..\fdk-aac\libSYS\src\wav_file.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\fdk-aac\libAACdec\include\aacdecoder_lib.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdecoder.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_drc.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_drc_types.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_hcr.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_hcrs.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_hcr_bit.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_hcr_types.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_pns.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aacdec_tns.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aac_ram.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\aac_rom.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\block.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\channel.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\channelinfo.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\conceal.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\conceal_types.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\debug.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\ldfiltbank.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\overlapadd.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\pulsedata.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\rvlc.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\rvlcbit.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\rvlcconceal.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\rvlc_info.h" />
+    <ClInclude Include="..\fdk-aac\libAACdec\src\stereo.h" />
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\include\mpegFileRead.h" />
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\include\tpdec_lib.h" />
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\include\tp_data.h" />
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\mpegFileFormat.h" />
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\tpdec_adif.h" />
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\tpdec_adts.h" />
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\tpdec_latm.h" />
+    <ClInclude Include="..\fdk-aac\libMpegTPDec\src\tpdec_lib_private.h" />
+    <ClInclude Include="..\fdk-aac\libPCMutils\src\limiter_private.h" />
+    <ClInclude Include="..\fdk-aac\libPCMutils\src\pcmutils_lib_private.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\include\sbrdecoder.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\env_calc.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\env_dec.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\env_extr.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\huff_dec.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\lpp_tran.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\psbitdec.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\psdec.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\psdec_hybrid.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbrdec_drc.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbrdec_freq_sca.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_crc.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_deb.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_dec.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_ram.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_rom.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\sbr_scale.h" />
+    <ClInclude Include="..\fdk-aac\libSBRdec\src\transcendent.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
