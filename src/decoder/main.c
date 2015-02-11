@@ -154,11 +154,6 @@ int main(int argc, char **argv)
     aacdec_ext_load_decoder_state(decoder, "test.decoderstate");
 #endif
 
-    if (inputStateFileName) {
-        aacdec_ext_load_decoder_state(decoder, inputStateFileName);
-        shouldSaveDecoderState = 1;
-    }
-
 #define INPUT_BUFFER_SIZE (1024 * 32)
 #define OUTPUT_BUFFER_SIZE (1024 * 32)
 
@@ -167,18 +162,30 @@ int main(int argc, char **argv)
 
     INT_PCM outputBuffer[OUTPUT_BUFFER_SIZE];
 
-    do {
+    if (inputStateFileName) {
+#if 1
+        // aacdec_ext_load_decoder_state() requires that the decoder has already allocated the
+        // correct channel configuration. This could be done via aacDecoder_ConfigRaw()
+        // or aacDecoder_Config. As a simple solution we let the decoder pull the data from
+        // the bitstream, then rewind the file.
+
+        // FIXME: we don't need to read the input buffer twice.
         size_t bytesRead = fread(inputBuffer, 1, INPUT_BUFFER_SIZE, inFile);
         if (bytesRead == 0) {
-            break;
+            fprintf(stderr, "ERROR: empty file\n");
+            result = -1;
+            goto end;
         }
 
-        UINT bytesValid = bytesRead;
+        {
+            UINT bytesValid = bytesRead;
 
-        UCHAR *in = inputBuffer;
-        UINT inSize = inputBufferSize;
-        do {
-            UINT old = bytesValid;
+            UCHAR *in = inputBuffer;
+            UINT inSize = bytesRead;
+
+            // decode one frame...
+
+            UINT oldBytesValid = bytesValid;
             AAC_DECODER_ERROR err = aacDecoder_Fill(decoder, &in, &inSize, &bytesValid);
             if (err != AAC_DEC_OK) {
                 fprintf(stderr, "ERROR: decoder (fill) returned error 0x%04x\n", err);
@@ -186,7 +193,55 @@ int main(int argc, char **argv)
                 goto end;
             }
 
-            UINT delta = old - bytesValid;
+            UINT delta = oldBytesValid - bytesValid;
+            //printf("aacDecoder_Fill consumed %d bytes\n", delta);
+            in += delta;
+            inSize -= delta;
+            if (delta > 0)
+                shouldSaveDecoderState = 1;
+
+            err = aacDecoder_DecodeFrame(decoder, outputBuffer, OUTPUT_BUFFER_SIZE, /*flags=*/0);
+            if (err == AAC_DEC_NOT_ENOUGH_BITS) {
+                fprintf(stderr, "ERROR: file only contains incomplete frame (unsupported)\n", err);
+                goto end;
+            }
+            else if (err != AAC_DEC_OK) {
+                fprintf(stderr, "ERROR: decoder (decode frame) returned error 0x%04x\n", err);
+                result = -1;
+                goto end;
+            }
+
+            for (int i=0; i<100; ++i)
+                aacDecoder_DecodeFrame(decoder, outputBuffer, OUTPUT_BUFFER_SIZE, /*flags=*/AACDEC_FLUSH);
+        }
+
+        fseek(inFile, 0, SEEK_SET); // rewind to start
+#endif
+        aacdec_ext_load_decoder_state(decoder, inputStateFileName);
+        shouldSaveDecoderState = 1;
+    }
+
+    do {
+        size_t bytesRead = fread(inputBuffer, 1, INPUT_BUFFER_SIZE, inFile);
+        if (bytesRead == 0) {
+            goto end;
+        }
+
+        UINT bytesValid = bytesRead;
+
+        UCHAR *in = inputBuffer;
+        UINT inSize = bytesRead;
+
+        do {
+            UINT oldBytesValid = bytesValid;
+            AAC_DECODER_ERROR err = aacDecoder_Fill(decoder, &in, &inSize, &bytesValid);
+            if (err != AAC_DEC_OK) {
+                fprintf(stderr, "ERROR: decoder (fill) returned error 0x%04x\n", err);
+                result = -1;
+                goto end;
+            }
+
+            UINT delta = oldBytesValid - bytesValid;
             //printf("aacDecoder_Fill consumed %d bytes\n", delta);
             in += delta;
             inSize -= delta;
@@ -218,8 +273,10 @@ int main(int argc, char **argv)
 
 end:
     if (decoder) {
-        if (shouldSaveDecoderState && outputStateFileName)
+        if (shouldSaveDecoderState && outputStateFileName){
             aacdec_ext_save_decoder_state(decoder, outputStateFileName);
+            aacdec_ext_load_decoder_state(decoder, outputStateFileName); // hack: verify that state loads
+        }
 
         aacDecoder_Close(decoder);
     }
