@@ -1,9 +1,9 @@
 ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = subdir-objects
 
-bin_PROGRAMS = fdkaac
+bin_PROGRAMS = fdkaacenc fdkaacdec
 
-fdkaac_SOURCES = \
+fdkaacenc_SOURCES = \
     src/aacenc.c               \
     src/caf_reader.c           \
     src/extrapolater.c         \
@@ -22,24 +22,32 @@ fdkaac_SOURCES = \
 
 dist_man_MANS = man/fdkaac.1
 
-fdkaac_LDADD = \
-    @LIBICONV@ -lfdk-aac -lm
+fdkaacenc_LDADD = \
+    @LIBICONV@ -lfdk-aac -lm -lc++
 
 if FDK_PLATFORM_POSIX
-    fdkaac_SOURCES += \
+    fdkaacenc_SOURCES += \
 	src/compat_posix.c
 endif
 
 if FDK_PLATFORM_WIN32
-    fdkaac_SOURCES += \
+    fdkaacenc_SOURCES += \
 	src/compat_win32.c
 endif
 
 if FDK_NO_GETOPT_LONG
-    fdkaac_SOURCES += \
+    fdkaacenc_SOURCES += \
 	missings/getopt.c
     AM_CPPFLAGS = -Imissings
 endif
+
+
+fdkaacdec_SOURCES = \
+    src/decoder/main.c
+
+fdkaacdec_LDADD = \
+    @LIBICONV@ -lfdk-aac -lm -lc++
+
 
 EXTRA_DIST = \
     m4/.gitkeep  \
