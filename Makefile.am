@@ -23,7 +23,7 @@ fdkaacenc_SOURCES = \
 dist_man_MANS = man/fdkaac.1
 
 fdkaacenc_LDADD = \
-    @LIBICONV@ -lfdk-aac -lm -lc++
+    @LIBICONV@ -lfdk-aac -lm -lstdc++
 
 if FDK_PLATFORM_POSIX
     fdkaacenc_SOURCES += \
@@ -46,7 +46,7 @@ fdkaacdec_SOURCES = \
     src/decoder/main.c
 
 fdkaacdec_LDADD = \
-    @LIBICONV@ -lfdk-aac -lm -lc++
+    @LIBICONV@ -lfdk-aac -lm -lstdc++
 
 
 EXTRA_DIST = \
