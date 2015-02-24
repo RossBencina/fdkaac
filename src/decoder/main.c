@@ -207,7 +207,7 @@ int main(int argc, char **argv)
 
             err = aacDecoder_DecodeFrame(decoder, outputBuffer, OUTPUT_BUFFER_SIZE, /*flags=*/0);
             if (err == AAC_DEC_NOT_ENOUGH_BITS) {
-                fprintf(stderr, "ERROR: file only contains incomplete frame (unsupported)\n", err);
+                fprintf(stderr, "ERROR: file only contains incomplete frame (unsupported)\n");
                 goto end;
             }
             else if (err != AAC_DEC_OK) {
